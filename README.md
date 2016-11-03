@@ -1,4 +1,4 @@
-# airpequiobstacles
+# AirPequiObstacles
 
 O AirPequiObstacles tem o intuito de auxiliar um deficiente visual a desviar de obstáculos aéreos, tais como: orelhão, postes, placas e outros; obstáculos estes não obtidos pela bengala (comumente usada).
 
