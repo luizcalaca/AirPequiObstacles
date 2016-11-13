@@ -19,10 +19,10 @@ GPIO.output(PINO_VIBRACALL, False)
 GPIO.output(PINO_TOCAR, True)
 
 config = {
-  "apiKey": "AIzaSyAiY_HZwiM1UlZ4KZ4-UZauS4fixsyPBf8",
-  "authDomain": "airpequiobstacles.firebaseapp.com",
-  "databaseURL": "https://airpequiobstacles.firebaseio.com/",
-  "storageBucket": "airpequiobstacles.appspot.com"
+  "apiKey": "yourAPIKEY",
+  "authDomain": "yourauthdomain.firebaseapp.com",
+  "databaseURL": "https://yourdatabaseurl.firebaseio.com/",
+  "storageBucket": "yourstoragebucket.appspot.com"
 }
 
 firebase = pyrebase.initialize_app(config)
