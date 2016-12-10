@@ -1,14 +1,15 @@
 import RPi.GPIO as GPIO
 import time
 import pyrebase
-import httplib
+import http.client
 
 GPIO.setmode(GPIO.BCM)
 
 TRIGGER = 18
 ECHO = 17
 PINO_VIBRACALL = 21
-DISTANCIA_OBSTACULO = 40
+DISTANCIA_OBSTACULO = 150
+DISTANCIA_LIMITE = 20
 PINO_TOCAR = 4
 
 GPIO.setup(TRIGGER, GPIO.OUT)
@@ -20,22 +21,23 @@ GPIO.output(PINO_VIBRACALL, False)
 GPIO.output(PINO_TOCAR, True)
 
 config = {
-  "apiKey": "yourAPIKEY",
-  "authDomain": "yourauthdomain.firebaseapp.com",
-  "databaseURL": "https://yourdatabaseurl.firebaseio.com/",
-  "storageBucket": "yourstoragebucket.appspot.com"
+  "apiKey": "AIzaSyAiY_HZwiM1UlZ4KZ4-UZauS4fixsyPBf8",
+  "authDomain": "airpequiobstacles.firebaseapp.com",
+  "databaseURL": "https://airpequiobstacles.firebaseio.com/",
+  "storageBucket": "gs://airpequiobstacles.appspot.com/"
 }
 
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
 def isConnected():
-    conn = httplib.HTTPConnection("www.google.com")
+    conn = http.client.HTTPConnection("www.google.com")
     try:
         conn.request("HEAD", "/")
         return True
     except:
         return False
+
 
 def vibrar():
     try:
@@ -86,10 +88,8 @@ try:
         if (distance < DISTANCIA_OBSTACULO):
             vibrar()
             tocar()
-            if(distance < DISTANCIA_LIMITE && isConnected()):
-              salvar(distance)
-        else:
-            GPIO.output(PINO_VIBRACALL, False)
+            if(distance < DISTANCIA_LIMITE and isConnected()):
+                salvar(distance)
         time.sleep(1)
 except KeyboardInterrupt:
     print("quit")
