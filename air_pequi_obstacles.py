@@ -38,7 +38,6 @@ def isConnected():
     except:
         return False
 
-
 def vibrar():
     try:
         while True:
