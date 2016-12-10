@@ -21,7 +21,7 @@ GPIO.output(PINO_VIBRACALL, False)
 GPIO.output(PINO_TOCAR, True)
 
 config = {
-  "apiKey": "AIzaSy$%654sy",
+  "apiKey": "AIzaSyABcDJyUL74&^",
   "authDomain": "airp.firebaseapp.com",
   "databaseURL": "https://airp.firebaseio.com/",
   "storageBucket": "gs://airp.appspot.com/"
