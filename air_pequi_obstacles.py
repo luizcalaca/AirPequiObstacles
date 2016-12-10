@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 import pyrebase
+import httplib
 
 GPIO.setmode(GPIO.BCM)
 
