@@ -28,6 +28,14 @@ config = {
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
+def isConnected():
+    conn = httplib.HTTPConnection("www.google.com")
+    try:
+        conn.request("HEAD", "/")
+        return True
+    except:
+        return False
+
 def vibrar():
     try:
         while True:
@@ -77,7 +85,8 @@ try:
         if (distance < DISTANCIA_OBSTACULO):
             vibrar()
             tocar()
-            salvar(distance)
+            if(distance < DISTANCIA_LIMITE && isConnected()):
+              salvar(distance)
         else:
             GPIO.output(PINO_VIBRACALL, False)
         time.sleep(1)
